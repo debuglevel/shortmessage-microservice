@@ -1,8 +1,10 @@
 app:
-  greetings:
-    # note that "null" must be enclosed by quotation marks, as it would be unset otherwise
-    default-language: "null"
-    unknown-language: "unknown"
+  shortmessage:
+    providers:
+      twilio:
+        accountsid: "AC77xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        authtoken: "2604xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        sendernumber: "+1xxxxxxxxxx"
   security:
     configurable-credential-authentication:
       username: "SECRET_USERNAME"
@@ -10,7 +12,7 @@ app:
 
 micronaut:
   application:
-    name: greeter
+    name: shortmessage
   server:
     port: 8080 # default: -1 (random port)
     cors:
@@ -25,7 +27,8 @@ micronaut:
         mapping: /swagger/**
   security:
     # default: false
-    enabled: true
+    #enabled: true
+    enabled: false
 
 logger:
   levels:

@@ -1,6 +1,6 @@
-package de.debuglevel.greeter
+package de.debuglevel.shortmessage
 
-import de.debuglevel.greeter.Application.main
+import de.debuglevel.shortmessage.Application.main
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.exceptions.HttpClientResponseException
 import org.assertj.core.api.Assertions

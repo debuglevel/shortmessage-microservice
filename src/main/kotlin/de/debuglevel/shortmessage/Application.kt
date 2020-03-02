@@ -1,4 +1,4 @@
-package de.debuglevel.greeter
+package de.debuglevel.shortmessage
 
 import io.micronaut.context.ApplicationContext
 import io.micronaut.runtime.Micronaut
@@ -15,9 +15,9 @@ import mu.KotlinLogging
  */
 @OpenAPIDefinition(
     info = Info(
-        title = "Greeter Microservice",
+        title = "Short Message Microservice",
         version = "0.1",
-        description = "Microservice for greeting people",
+        description = "Microservice for sending short messages",
         license = License(name = "Unlicense", url = "https://unlicense.org/"),
         contact = Contact(url = "http://debuglevel.de", name = "Marc Kohaupt", email = "debuglevel at gmail.com")
     )

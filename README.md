@@ -38,7 +38,7 @@ There is an OpenAPI (former: Swagger) specification created, which is available 
 
 ## Get greeting
 
-To get an appropriate greeting for a person, send a GET request to the service:
+To get an appropriate greeting for a message, send a GET request to the service:
 
 ```
 $ curl -X GET http://localhost/greetings/Johnny%20Knoxville

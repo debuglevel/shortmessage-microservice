@@ -1,4 +1,4 @@
-package de.debuglevel.greeter
+package de.debuglevel.shortmessage
 
 import io.micronaut.context.annotation.Property
 import io.micronaut.security.authentication.*

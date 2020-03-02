@@ -45,15 +45,15 @@ plugins {
 apply plugin: 'org.hibernate.orm'
 
 // application plugin configuration
-applicationName = "Greeter Microservice"
-mainClassName = "de.debuglevel.greeter.Application"
+applicationName = "Short Message Microservice"
+mainClassName = "de.debuglevel.shortmessage.Application"
 
 repositories {
     jcenter()
 //    mavenLocal()
-//    maven {
-//        url "https://jitpack.io"
-//    }
+    maven {
+        url "https://jitpack.io"
+    }
 }
 
 dependencies {
@@ -117,6 +117,10 @@ dependencies {
     // Swagger / OpenAPI
     kapt "io.micronaut.configuration:micronaut-openapi"
     implementation "io.swagger.core.v3:swagger-annotations"
+
+    // SMS gateway providers
+    implementation 'com.github.esendex:esendex-java-sdk:239006c634'
+    implementation group: "com.twilio.sdk", name: "twilio", version: "7.42.0"
 }
 
 // Java configuration
