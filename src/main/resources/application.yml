@@ -1,10 +1,15 @@
 app:
   shortmessage:
+    provider: "twilio"
     providers:
       twilio:
         accountsid: "AC77xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         authtoken: "2604xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         sendernumber: "+1xxxxxxxxxx"
+      esendex:
+        username: "xxxxxxx"
+        password: "xxxxxxx"
+        accountreference: "xxxxxxx"
   security:
     configurable-credential-authentication:
       username: "SECRET_USERNAME"
