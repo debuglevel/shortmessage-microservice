@@ -10,6 +10,10 @@ app:
         username: "xxxxxxx"
         password: "xxxxxxx"
         accountreference: "xxxxxxx"
+      sms77:
+        apikey: "xxxxxxx"
+        # sender can be text (at least if "direct" message type is used)
+        sender: "xxxxxxx"
   security:
     configurable-credential-authentication:
       username: "SECRET_USERNAME"
