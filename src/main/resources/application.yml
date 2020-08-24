@@ -22,6 +22,8 @@ app:
 micronaut:
   application:
     name: shortmessage
+    instance:
+      id: ${random.shortuuid} # instance ID should be set random if Consul registration is active to avoid collisions (default ID would be the port number)
   server:
     port: 8080 # default: -1 (random port)
     cors:
@@ -38,16 +40,35 @@ micronaut:
     # default: false
     #enabled: true
     enabled: false
+#  http:
+#    services: # manual service discovery
+#      foo: # service ID
+#        urls: # environment variable list would be MICRONAUT_HTTP_SERVICES_FOO_URLS=http://prod1,http://prod2
+#          - http://foo1
+#          - http://foo2
 
 logger:
   levels:
     de.debuglevel: DEBUG
     io.micronaut.http.server: DEBUG
     io.micronaut.data.query: DEBUG
+    # io.micronaut.context.condition: DEBUG # log infos abount loading conditional beans
 
 jackson:
+  serialization-inclusion: NON_ABSENT # omit null and Optional.empty() in JSON, but include empty collections and empty strings
   serialization:
     indentOutput: true
+    writeDatesAsTimestamps: false # write DateTimes as ISO 8601 "2020-07-26T21:37:09.39" instead of an array of numbers
+
+# default values of consul section only apply if io.micronaut:micronaut-discovery-client is available
+consul:
+  client:
+    health-check: false # check if Consul is alive; should be true if Consul is used (default: true; other health checks get active as soon as discovery.enabled=true)
+    registration: # register this service on Consul
+      enabled: false # default: true
+    discovery: # search for services on Consul if their id is provided (e.g. Micronaut declarative clients)
+      enabled: false # default: true
+    defaultZone: "${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}" # Consul server to use for service registration and discovery
 
 datasources:
   #  # Apache Derby
