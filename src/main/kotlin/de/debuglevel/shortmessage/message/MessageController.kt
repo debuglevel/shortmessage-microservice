@@ -11,7 +11,7 @@ class MessageController(private val shortmessageSenderService: ShortmessageSende
     private val logger = KotlinLogging.logger {}
 
     @Post("/")
-    fun postOne(messageRequest: MessageRequest): HttpResponse<MessageResponse> {
+    fun postOne(messageRequest: MessageRequest): HttpResponse<*> {
         logger.debug("Called postOne($messageRequest)")
 
         return try {
@@ -20,7 +20,7 @@ class MessageController(private val shortmessageSenderService: ShortmessageSende
             HttpResponse.created(MessageResponse(messageReceipt))
         } catch (e: Exception) {
             logger.error(e) { "Unhandled exception" }
-            HttpResponse.serverError<MessageResponse>()
+            HttpResponse.serverError("Unhandled exception: ${e.stackTrace}")
         }
     }
 }
