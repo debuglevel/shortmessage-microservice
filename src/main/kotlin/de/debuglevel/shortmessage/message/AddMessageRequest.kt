@@ -1,6 +1,6 @@
 package de.debuglevel.shortmessage.message
 
-data class MessageRequest(
+data class AddMessageRequest(
     val recipientNumber: String,
     val body: String
 )
