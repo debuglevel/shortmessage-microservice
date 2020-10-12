@@ -14,6 +14,15 @@ app:
         apikey: "xxxxxxx"
         # sender can be text (at least if "direct" message type is used)
         sender: "xxxxxxx"
+      email:
+        server:
+          host: "xxxxxxx.invalid"
+          port: 587
+          username: "xxxxxxx"
+          password: "xxxxxxx"
+        recipient:
+          name: "Xxxx Xxxxx"
+          email: "xxxxx@xxxxxxx.invalid"
   security:
     configurable-credential-authentication:
       username: "SECRET_USERNAME"
