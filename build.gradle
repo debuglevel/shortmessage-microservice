@@ -138,7 +138,7 @@ dependencies {
     // SMS gateway providers
     implementation "com.github.esendex:esendex-java-sdk:$esendexVersion"
     implementation "com.twilio.sdk:twilio:$twilioVersion"
-    implementation 'org.simplejavamail:simple-java-mail:6.4.3'
+    implementation "org.simplejavamail:simple-java-mail:$simplejavamailVersion"
 }
 
 // Java configuration
