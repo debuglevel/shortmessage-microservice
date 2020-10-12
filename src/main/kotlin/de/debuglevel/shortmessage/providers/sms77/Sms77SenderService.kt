@@ -19,55 +19,6 @@ class Sms77SenderService(
 ) : ShortmessageSenderService {
     private val logger = KotlinLogging.logger {}
 
-    private fun send(recipientNumber: String, body: String, sender: String, apiKey: String, type: String): String {
-        val urlString = "https://gateway.sms77.io/api/sms/" +
-                "?p=$apiKey" +
-                "&to=$recipientNumber" +
-                "&text=$body" +
-                "&type=$type" +
-                "&from=$sender"
-
-        val output = getUrlContents(urlString)
-
-        logger.debug { "Answer from API: $output" }
-
-        return output
-    }
-
-    /**
-     * remarks: example code taken from https://www.sms77.io/de/entwickler/
-     */
-    private fun getUrlContents(theUrl: String): String {
-        val content = StringBuilder()
-
-        // many of these calls can throw exceptions, so i've just
-        // wrapped them all in one try/catch statement.
-        try {
-            // create a url object
-            val url = URL(theUrl)
-
-            // create a urlconnection object
-            val urlConnection = url.openConnection()
-
-            // wrap the urlconnection in a bufferedreader
-            val bufferedReader = BufferedReader(
-                InputStreamReader(urlConnection.getInputStream())
-            )
-
-            var line: String
-
-            // read from the urlconnection via the bufferedreader
-            content.append(bufferedReader.readText())
-
-            bufferedReader.close()
-        } catch (e: Exception) {
-            logger.error(e) { "Sending failed" }
-            throw e
-        }
-
-        return content.toString()
-    }
-
     override fun send(recipientNumber: String, body: String): MessageReceipt {
         logger.debug { "Sending body '$body' to '$recipientNumber'..." }
 
@@ -77,5 +28,35 @@ class Sms77SenderService(
         val messageReceipt = MessageReceipt()
 
         return messageReceipt
+    }
+
+    private fun send(recipientNumber: String, body: String, sender: String, apiKey: String, type: String): String {
+        val url = "https://gateway.sms77.io/api/sms/" +
+                "?p=$apiKey" +
+                "&to=$recipientNumber" +
+                "&text=$body" +
+                "&type=$type" +
+                "&from=$sender"
+
+        logger.debug { "Sending request to URL $url" }
+        val response = getUrlContents(URL(url))
+        logger.debug { "Sent request, answer from API: $response" }
+
+        return response
+    }
+
+    /**
+     * Remarks: example code taken from https://www.sms77.io/de/entwickler/ and reduced to Kotlin style
+     */
+    private fun getUrlContents(url: URL): String {
+        return try {
+            val urlConnection = url.openConnection()
+            BufferedReader(InputStreamReader(urlConnection.getInputStream())).use {
+                it.readText()
+            }
+        } catch (e: Exception) {
+            logger.error(e) { "Sending failed" }
+            throw e
+        }
     }
 }

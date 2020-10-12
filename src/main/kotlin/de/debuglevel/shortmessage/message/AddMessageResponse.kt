@@ -2,7 +2,7 @@ package de.debuglevel.shortmessage.message
 
 import de.debuglevel.shortmessage.providers.MessageReceipt
 
-data class MessageResponse(
+data class AddMessageResponse(
     val id: String?,
     val body: String?,
     val senderNumber: String?,

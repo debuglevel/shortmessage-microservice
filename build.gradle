@@ -136,8 +136,8 @@ dependencies {
     implementation "io.swagger.core.v3:swagger-annotations"
 
     // SMS gateway providers
-    implementation 'com.github.esendex:esendex-java-sdk:239006c634'
-    implementation group: "com.twilio.sdk", name: "twilio", version: "7.42.0"
+    implementation "com.github.esendex:esendex-java-sdk:$esendexVersion"
+    implementation "com.twilio.sdk:twilio:$twilioVersion"
     implementation 'org.simplejavamail:simple-java-mail:6.4.3'
 }
 
