@@ -21,6 +21,7 @@ class EmailSenderService(
     @Property(name = "app.shortmessage.providers.email.server.password") private val password: String,
     @Property(name = "app.shortmessage.providers.email.recipient.name") private val name: String,
     @Property(name = "app.shortmessage.providers.email.recipient.email") private val emailAddress: String,
+    @Property(name = "app.shortmessage.providers.email.sender.email") private val senderEmailAddress: String,
 ) : ShortmessageSenderService {
     private val logger = KotlinLogging.logger {}
 
@@ -50,6 +51,7 @@ class EmailSenderService(
 
     private fun sendMail(recipientNumber: String, body: String) {
         val email = EmailBuilder.startingBlank()
+            .from("SMS Mock", senderEmailAddress)
             .to(name, emailAddress)
             .withSubject("SMS to $recipientNumber")
             .withPlainText(body)

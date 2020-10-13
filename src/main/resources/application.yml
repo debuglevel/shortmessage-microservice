@@ -22,6 +22,8 @@ app:
         recipient:
           name: "Xxxx Xxxxx"
           email: "xxxxx@xxxxxxx.invalid"
+        sender:
+          email: "xxxxx@xxxxxxx.invalid"
   security:
     configurable-credential-authentication:
       username: "SECRET_USERNAME"
