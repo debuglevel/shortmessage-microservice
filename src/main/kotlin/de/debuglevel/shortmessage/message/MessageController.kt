@@ -4,8 +4,11 @@ import de.debuglevel.shortmessage.providers.ShortmessageSenderService
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Post
+import io.micronaut.security.annotation.Secured
+import io.micronaut.security.rules.SecurityRule
 import mu.KotlinLogging
 
+@Secured(SecurityRule.IS_AUTHENTICATED)
 @Controller("/messages")
 class MessageController(private val shortmessageSenderService: ShortmessageSenderService) {
     private val logger = KotlinLogging.logger {}
