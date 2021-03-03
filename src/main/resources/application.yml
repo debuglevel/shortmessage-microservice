@@ -9,7 +9,7 @@ app:
       esendex:
         username: "xxxxxxx"
         password: "xxxxxxx"
-        accountreference: "xxxxxxx"
+        accountreference: "EXxxxxxxx"
       sms77:
         apikey: "xxxxxxx"
         sender: "xxxxxxx" # sender can be text (at least if "direct" message type is used)
