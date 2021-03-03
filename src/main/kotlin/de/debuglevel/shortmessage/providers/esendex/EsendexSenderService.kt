@@ -41,6 +41,8 @@ class EsendexSenderService(
             MessageReceipt(id = response.batchId)
         } catch (e: EsendexException) {
             logger.error(e) { "Sending body failed" }
+            // TODO: On bad authentication, esendex library throws this Exception: esendex.sdk.java.http.HttpException: Http response code: 403 (null)
+            //       Unfortunately, it does not contain an Integer but only a String - and I don't know if we really should look for "403" in the message...
             throw e
         }
     }
