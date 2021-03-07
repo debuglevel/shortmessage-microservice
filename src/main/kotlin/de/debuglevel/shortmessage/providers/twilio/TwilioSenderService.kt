@@ -25,7 +25,7 @@ class TwilioSenderService(
     }
 
     override fun send(recipientNumber: String, body: String): MessageReceipt {
-        logger.debug { "Sending body '$body' to '$recipientNumber'..." }
+        logger.debug { "Sending message with body '$body' to '$recipientNumber'..." }
 
         val message = Message
             .creator(
@@ -35,7 +35,7 @@ class TwilioSenderService(
             )
             .create()
 
-        logger.debug { "Sent body '$body' to '$recipientNumber': $message" }
+        logger.debug { "Sent message with body '$body' to '$recipientNumber': $message" }
         val messageReceipt = MessageReceipt(
             id = message.sid,
             body = message.body,

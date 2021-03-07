@@ -33,7 +33,7 @@ class EmailSenderService(
         .buildMailer()
 
     override fun send(recipientNumber: String, body: String): MessageReceipt {
-        logger.debug { "Sending body '$body' to '$recipientNumber' (if it wasn't the EmailSenderService)..." }
+        logger.debug { "Sending message with body '$body' to '$recipientNumber' (if it wasn't the EmailSenderService)..." }
 
         sendMail(recipientNumber, body)
 

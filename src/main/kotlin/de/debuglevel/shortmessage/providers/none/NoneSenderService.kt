@@ -15,7 +15,7 @@ class NoneSenderService : ShortmessageSenderService {
     private val lastId = AtomicInteger(0)
 
     override fun send(recipientNumber: String, body: String): MessageReceipt {
-        logger.debug { "Sending body '$body' to '$recipientNumber' (if it wasn't the NoneSenderService)..." }
+        logger.debug { "Sending message with body '$body' to '$recipientNumber' (if it wasn't the NoneSenderService)..." }
 
         val messageReceipt = MessageReceipt(
             id = lastId.incrementAndGet().toString(),

@@ -20,11 +20,11 @@ class Sms77SenderService(
     private val logger = KotlinLogging.logger {}
 
     override fun send(recipientNumber: String, body: String): MessageReceipt {
-        logger.debug { "Sending body '$body' to '$recipientNumber'..." }
+        logger.debug { "Sending message with body '$body' to '$recipientNumber'..." }
 
         send(recipientNumber, body, sender, apiKey, "direct")
 
-        logger.debug { "Sent body '$body' to '$recipientNumber'" }
+        logger.debug { "Sent message with body '$body' to '$recipientNumber'" }
         val messageReceipt = MessageReceipt()
 
         return messageReceipt

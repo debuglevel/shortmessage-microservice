@@ -28,7 +28,7 @@ class MessageController(private val shortmessageSenderService: ShortmessageSende
             HttpResponse.serverError("Could not send message due to bad authorization")
         } catch (e: Exception) {
             logger.error(e) { "Unhandled exception" }
-            HttpResponse.serverError("Unhandled exception: ${e.stackTrace}")
+            HttpResponse.serverError("Unhandled exception")
         }
     }
 }
