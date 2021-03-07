@@ -1,5 +1,6 @@
 package de.debuglevel.shortmessage.message
 
+import de.debuglevel.shortmessage.providers.BadAuthorizationException
 import de.debuglevel.shortmessage.providers.ShortmessageSenderService
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
@@ -22,6 +23,9 @@ class MessageController(private val shortmessageSenderService: ShortmessageSende
                 shortmessageSenderService.send(addMessageRequest.recipientNumber, addMessageRequest.body)
 
             HttpResponse.created(AddMessageResponse(messageReceipt))
+        } catch (e: BadAuthorizationException) {
+            logger.error(e) { "Could not send message due to bad authorization" }
+            HttpResponse.serverError("Could not send message due to bad authorization")
         } catch (e: Exception) {
             logger.error(e) { "Unhandled exception" }
             HttpResponse.serverError("Unhandled exception: ${e.stackTrace}")
